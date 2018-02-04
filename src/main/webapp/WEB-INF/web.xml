@@ -122,4 +122,14 @@
     <servlet-name>ChargeRuleAdd</servlet-name>
     <url-pattern>/ChargeRuleAdd.do</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ChargeAdd</display-name>
+    <servlet-name>ChargeAdd</servlet-name>
+    <servlet-class>com.zgq.servlet.ChargeAdd</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ChargeAdd</servlet-name>
+    <url-pattern>/ChargeAdd.do</url-pattern>
+  </servlet-mapping>
 </web-app>

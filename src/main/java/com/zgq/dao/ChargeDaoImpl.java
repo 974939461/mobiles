@@ -1,5 +1,7 @@
 package com.zgq.dao;
 
+import java.util.List;
+
 import com.oracle.jdbc.util.Dao;
 import com.oracle.jdbc.util.Transactional;
 import com.zgq.vo.Tcharge;
@@ -17,6 +19,10 @@ public class ChargeDaoImpl implements ChargeDao {
 		Dao.executeSql("delete from tcharge_rule");
 		for(int i=0;i<s.length;i++)
 		Dao.executeSql("insert into tcharge_rule (chargecode) values (?)", s[i]);
+	}
+	public List<Tcharge> change1() {
+		// TODO Auto-generated method stub
+		return Dao.query("select * from tcharge", Tcharge.class);
 	}
 
 }

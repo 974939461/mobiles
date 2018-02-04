@@ -10,7 +10,19 @@
 <script type="text/javascript" src="js/jquery-1.11.1.js"></script>
 <script type="text/javascript">
              $(function(){
-                     
+                 $.get("ChargeAdd.do",function(a){
+                	
+                	 for(var i=0;i<a.length;i++){
+                		$("#sel").append($("<option  charge="+a[i].charge+" >").val(a[i].chargeCode).html(a[i].chargeName)); 
+                	    $("#div1").append($("<input type='checkbox'>").attr({name:"chargeCode",value:a[i].chargeCode})).append($("<span>").html(a[i].chargeName));
+                	 }
+                	 
+                	  $("#sel").change(function(){
+                    	 $("#cha").val($(this).find("option:selected").attr("charge"));
+                     })       	 
+                 },"json")
+                 
+                 
             	 
              })
              
@@ -106,16 +118,16 @@
 						<h2>收费细项</h2>
 						<form method="POST" action="Charge.do">
 							<p>
-								收费项目：<select size="1" name="chargeCode">
-									<option value="A">开户费</option>
+								收费项目：<select size="1" id="sel" name="chargeCode">
+									<!-- <option value="A">开户费</option>
 									<option value="B">漫游费</option>
 									<option value="C">押金</option>
 									<option value="D">入网费</option>
-									<option value="E">选号费</option>
+									<option value="E">选号费</option> -->
 								</select>
 							</p>
 							<p>
-								收费金额：<input type="text" name="charge" size="20" value="10">
+								收费金额：<input type="text" id="cha" name="charge" size="20" value="10">
 							</p>
 							<p>
 								<input type="submit" value="提交" name="B1"><input
@@ -131,11 +143,12 @@
 								</select>
 							</p>
 							<p>
-								收费项目：<input type="checkbox" name="chargeCode" value="A" checked>开户费
+								收费项目：<div id="div1"></div>
+								<!-- <input type="checkbox" name="chargeCode" value="A" checked>开户费
 								<input type="checkbox" name="chargeCode" value="B">漫游费 <input
 									type="checkbox" name="chargeCode" value="C">押金 <input
 									type="checkbox" name="chargeCode" value="D" checked>入网费 <input
-									type="checkbox" name="chargeCode" value="E" checked>选号费
+									type="checkbox" name="chargeCode" value="E" checked>选号费 -->
 							</p>
 							<p>
 								<input type="submit" value="提交" name="B1"><input
